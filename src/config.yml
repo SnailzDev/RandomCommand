@@ -1,2 +1,11 @@
-## YAML Template.
----
+#RandomCommand config
+#write the list of commands in commands with out the slash and in quotes
+#EX:
+# you would do restart not /restart
+#{name} will be replaced with the player name
+#EX: 
+#commands:
+# - "say {name}"
+#this will broadcast the name of the player
+commands:
+ - "say {name} was picked"
