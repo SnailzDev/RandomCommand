@@ -1,0 +1,9 @@
+main: net.snailz.executerandomcommand.Main
+name: Execute Random Command
+version: 1.0
+author: Snailz
+commands:
+    RC:
+        discription: execute a random command from the list
+        usage: RC <player>
+        permission: randomcommand.command
