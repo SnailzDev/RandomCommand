@@ -1,5 +1,5 @@
 main: net.snailz.executerandomcommand.Main
-name: Execute Random Command
+name: RandomCommand
 version: 1.0
 author: Snailz
 commands:
