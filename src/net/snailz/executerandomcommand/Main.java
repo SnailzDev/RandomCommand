@@ -21,10 +21,10 @@ public class Main extends JavaPlugin implements CommandExecutor{
             if (args[0] == null){
                 return false;
             }
-            List<String> list = this.getConfig().getStringList("commands");
+            List<String> list = this.getConfig().getStringList(args[0]);
             Random random = new Random();
             String cmd = list.get(random.nextInt(list.size()));
-            cmd = cmd.replace("{name}", args[0]);
+            cmd = cmd.replace("{name}", args[1]);
             Bukkit.dispatchCommand(Bukkit.getConsoleSender(), cmd);
             return true;
             

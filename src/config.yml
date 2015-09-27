@@ -1,5 +1,11 @@
 #RandomCommand config
 #write the list of commands with out the slash and in quotes
+#You may make multiple lists of commands
+#EX:
+#list1:
+#- "say this is list one"
+#list2:
+#- "say this is list 2"
 #EX:
 # you would do restart not /restart
 #{name} will be replaced with the player name
