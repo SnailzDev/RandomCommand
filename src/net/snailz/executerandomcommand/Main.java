@@ -18,11 +18,6 @@ public class Main extends JavaPlugin implements CommandExecutor{
     
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args){
         if (command.getName().equalsIgnoreCase("RC")){
-            if (args[0] == null){
-                return false;
-            } else if (args[1] == null){
-                return false;
-            }
             List<String> list = this.getConfig().getStringList(args[0]);
             Random random = new Random();
             String cmd = list.get(random.nextInt(list.size()));
