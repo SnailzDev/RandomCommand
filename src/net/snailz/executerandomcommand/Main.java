@@ -18,7 +18,7 @@ public class Main extends JavaPlugin implements CommandExecutor{
     
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args){
         if (command.getName().equalsIgnoreCase("RC")){
-            if (args[0] == null){
+            if (args[0] == null || args[1] == null){
                 return false;
             }
             List<String> list = this.getConfig().getStringList(args[0]);
