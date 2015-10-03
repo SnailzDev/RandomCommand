@@ -12,10 +12,12 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class Main extends JavaPlugin implements CommandExecutor{
     
+    @Override
     public void onEnable(){
         this.saveDefaultConfig();
     }
     
+    @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args){
         if (command.getName().equalsIgnoreCase("RC")){
             List<String> list = this.getConfig().getStringList(args[0]);
