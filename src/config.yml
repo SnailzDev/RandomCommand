@@ -5,7 +5,7 @@
 #list1:
 #- "say this is list one"
 #list2:
-#- "say this is list 2"
+#- "say this is list two"
 #EX:
 # you would type restart not /restart
 #{name} will be replaced with the player name
