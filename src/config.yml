@@ -7,11 +7,16 @@
 #list2:
 #- "say this is list 2"
 #EX:
-# you would do restart not /restart
+# you would type restart not /restart
 #{name} will be replaced with the player name
+#you add the persentage by seperating the percentage with a :
+#the plugin goes top to bottom and inorder to make shure things happen the way you want them to put the items in the order of the percentage you want them to go in
+#to make shure something happens at something that has a %100 chance at the bottom
 #EX: 
 #commands:
-#- "say {name}"
-#this will broadcast the name of the player
+#- "10:say {name} is epic"
+#- "50:say {name} is cool"
+#- "100:say {name}"
+#this will broadcast the name of the player with mabye other stuff
 commands:
-- "say {name}"
+- "100:say {name}"

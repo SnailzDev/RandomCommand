@@ -21,27 +21,18 @@ public class Main extends JavaPlugin implements CommandExecutor{
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args){
         if (command.getName().equalsIgnoreCase("RC")){
             List<String> list = this.getConfig().getStringList(args[0]);
-            int listsize = list.size() - 1;
-            for (int i = 0; i < listsize; i++) {
-                String item = list.get(i);
-                if (!item.contains("_")){
-                    Random random = new Random();
-                    String cmd = list.get(random.nextInt(list.size()));
-                    cmd = cmd.replace("{name}", args[1]);
-                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), cmd);
-                    break;
-                }
-                String[] item_string = item.split(":");
-                int randomint = (int) (Math.random() * 100);
-                int percent = Integer.parseInt(item_string[0]);
-                if (percent < randomint){
-                    String cmd = item_string[1];
-                    cmd = cmd.replace("{name}", args[1]);
-                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), cmd);
-                    break;
+            int randomint = (int) (Math.random() * 100);
+            for (String cmd : list){
+                cmd = cmd.replace("{name}", args[1]);
+                String[] cmd_list = cmd.split(":");
+                int percent = Integer.parseInt(cmd_list[0]);
+                if (percent > randomint){
+                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), cmd_list[1]);
+                    return true;
+                } else{
+                    continue;
                 }
             }
-            return true;
             
         }
         return false;
