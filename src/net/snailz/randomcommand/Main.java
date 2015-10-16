@@ -25,6 +25,7 @@ public class Main extends JavaPlugin implements CommandExecutor{
                 sender.sendMessage(ChatColor.GREEN + "RandomCommand Help");
                 sender.sendMessage(ChatColor.GREEN + "/rc <list> <playername>");
                 sender.sendMessage(ChatColor.GREEN + "use: execute a random command from a list that you put as the 1st argument with {name} replaced with the player name that you put as the 2nd argument");
+                return true;
             }
             List<String> list = this.getConfig().getStringList(args[0]);
             if (this.getConfig().getBoolean("use%") == false){
