@@ -1,6 +1,6 @@
 main: net.snailz.randomcommand.Main
 name: RandomCommand
-version: 0.4
+version: 0.3.1
 author: Snailz
 commands:
     RC:
