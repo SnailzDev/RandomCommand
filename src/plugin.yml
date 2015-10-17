@@ -5,5 +5,5 @@ author: Snailz
 commands:
     RC:
         discription: execute a random command from the list
-        usage: RC <player>
+        usage: RC <listname> <playername>
         permission: randomcommand.command
