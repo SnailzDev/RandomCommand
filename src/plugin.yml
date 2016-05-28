@@ -1,9 +1,13 @@
 main: net.snailz.randomcommand.Main
 name: RandomCommand
-version: 0.3.2
+version: 0.3.4
 author: Snailz
 commands:
     RC:
         discription: execute a random command from the list
         usage: RC <listname> <playername>
         permission: randomcommand.command
+permissions:
+    randomcommand.command:
+        description: Gives the player permission to use random command
+        default: op
