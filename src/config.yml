@@ -1,3 +1,5 @@
+#DO NOT CHANGE
+configver: 1
 #RandomCommand config
 #write the list of commands with out the slash and in quotes
 #You may make multiple lists of commands
@@ -7,7 +9,7 @@
 #list2:
 #- "say this is list two"
 #EX:
-# you would type restart not /restart
+#you would type restart not /restart
 #{name} will be replaced with the player name
 #you use it by doing the command /rc <listname> <name>
 #you can chose if you want to use %s or not
@@ -22,6 +24,16 @@
 #- "100:say {name}"
 #this will broadcast the name of the player with maybe other stuff
 #if you don’t want to use % it will chose a random command and they all have equal chance
+#if you want to have 2 commands in 1 option you can seperate them with a ; WITH NO SPACES
+#if you want to use something else you can change it under commandsplitcharacter
+#EX:
+#commands:
+#- "say 1;say 2"
+#- "say 3;say 4"
+#this will either broadcast 1 & 2 or 3 & 4
 use%: true
+#NOTE: PLUGIN ONLY SUPPORTS 2 COMMANDS PER OPTION RIGHT NOW
+commandsplitcharacter: ";"
+
 commands:
 - "100:say {name}"

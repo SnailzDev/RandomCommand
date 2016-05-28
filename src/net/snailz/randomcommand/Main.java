@@ -15,7 +15,12 @@ public class Main extends JavaPlugin implements CommandExecutor{
     
     @Override
     public void onEnable(){
+        int configver = 1;
         this.saveDefaultConfig();
+        int CVU = this.getConfig().getInt("configver");
+        if (configver != CVU){
+            getLogger().severe("NEW CONFIG NEEDED. COPY ALL COMMAND LISTS, DELETE CONFIG, AND RESTART SERVER!");
+        }
     }
     
     @Override
@@ -31,19 +36,39 @@ public class Main extends JavaPlugin implements CommandExecutor{
             if (this.getConfig().getBoolean("use%") == false){
                     Random random = new Random();
                     String cmd = list.get(random.nextInt(list.size()));
+                    if (cmd.contains("{name}")){
                     cmd = cmd.replace("{name}", args[1]);
+                    }
+                    if (cmd.toLowerCase().contains(this.getConfig().getString("commandsplitcharacter"))){
+                        String[] cmds = cmd.split(this.getConfig().getString("commandsplitcharacter"));
+                        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), cmds[0]);
+                        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), cmds[1]);
+                        return true;
+                    }
+                    else{
                     Bukkit.dispatchCommand(Bukkit.getConsoleSender(), cmd);
                     return true;
+                    }
             }
             if (this.getConfig().getBoolean("use%") == true){
             int randomint = (int) (Math.random() * 100);
             for (String cmd : list){
-                cmd = cmd.replace("{name}", args[1]);
+                if (cmd.contains("{name}")){
+                    cmd = cmd.replace("{name}", args[1]);
+                    }
                 String[] cmd_list = cmd.split(":");
                 int percent = Integer.parseInt(cmd_list[0]);
                 if (percent > randomint){
+                    if (cmd_list[1].toLowerCase().contains(this.getConfig().getString("commandsplitcharacter"))){
+                        String[] cmds = cmd_list[1].split(this.getConfig().getString("commandsplitcharacter"));
+                        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), cmds[0]);
+                        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), cmds[1]);
+                        return true;
+                    }
+                    else{
                     Bukkit.dispatchCommand(Bukkit.getConsoleSender(), cmd_list[1]);
                     return true;
+                    }
                 }
             }
             }
