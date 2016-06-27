@@ -24,7 +24,7 @@ configver: 1
 #- "100:say {name}"
 #this will broadcast the name of the player with maybe other stuff
 #if you don’t want to use % it will chose a random command and they all have equal chance
-#if you want to have 2 commands in 1 option you can seperate them with a ; WITH NO SPACES
+#if you want to have two or more commands in 1 option you can seperate them with a ; WITH NO SPACES
 #if you want to use something else you can change it under commandsplitcharacter
 #EX:
 #commands:
