@@ -32,7 +32,7 @@ configver: 1
 #- "say 3;say 4"
 #this will either broadcast 1 & 2 or 3 & 4
 use%: true
-#NOTE: PLUGIN ONLY SUPPORTS 2 COMMANDS PER OPTION RIGHT NOW
+
 commandsplitcharacter: ";"
 
 commands:
