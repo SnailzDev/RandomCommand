@@ -1,8 +1,10 @@
 
 package net.snailz.randomcommand;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -11,9 +13,33 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
-
 public class Main extends JavaPlugin implements CommandExecutor{
-    
+/*
+public static boolean isInteger(String str) {
+    if (str == null) {
+        return false;
+    }
+    int length = str.length();
+    if (length == 0) {
+        return false;
+    }
+    int i = 0;
+    if (str.charAt(0) == '-') {
+        if (length == 1) {
+            return false;
+        }
+        i = 1;
+    }
+    for (; i < length; i++) {
+        char c = str.charAt(i);
+        if (c < '0' || c > '9') {
+            return false;
+        }
+    }
+    return true;
+}
+*/
+ 
     @Override
     public void onEnable(){
         int configver = 1;
@@ -56,6 +82,16 @@ public class Main extends JavaPlugin implements CommandExecutor{
                             }
                         }
                         for (int x = 0;x < cmdslength; x++){
+                            if (args.length == 3){
+                                int wait = Integer.parseInt(args[2]);
+                                if (wait > 0){
+                                    try{
+                                        TimeUnit.SECONDS.sleep(wait);
+                                    } catch(InterruptedException ex){
+                                        Thread.currentThread().interrupt();
+                                    }
+                                }
+                            }
                             Bukkit.dispatchCommand(Bukkit.getConsoleSender(), cmds[x]);
                         }
                         return true;
@@ -68,6 +104,16 @@ public class Main extends JavaPlugin implements CommandExecutor{
                                 return true;
                             }
                             cmd = cmd.replace("{name}", args[1]);
+                        }
+                    if (args.length == 3){
+                        int wait = Integer.parseInt(args[2]);
+                            if (wait > 0){
+                                try{
+                                    TimeUnit.SECONDS.sleep(wait);
+                                } catch(InterruptedException ex){
+                                    Thread.currentThread().interrupt();
+                                }
+                            }
                         }
                     Bukkit.dispatchCommand(Bukkit.getConsoleSender(), cmd);
                     return true;
@@ -96,7 +142,17 @@ public class Main extends JavaPlugin implements CommandExecutor{
                             }
                         }
                         for (int x = 0;x < cmdslength; x++){
-                            Bukkit.dispatchCommand(Bukkit.getConsoleSender(), cmds[x]);
+                            if (args.length == 3){
+                                int wait = Integer.parseInt(args[2]);
+                                if (wait > 0){
+                                    try{
+                                        TimeUnit.SECONDS.sleep(wait);
+                                    } catch(InterruptedException ex){
+                                        Thread.currentThread().interrupt();
+                                    }
+                                }
+                            }
+                        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), cmds[x]);
                         }
                         return true;
                     }
@@ -109,6 +165,16 @@ public class Main extends JavaPlugin implements CommandExecutor{
                             }
                             cmd_list[1] = cmd_list[1].replace("{name}", args[1]);
                         }
+                        if (args.length == 3){
+                        int wait = Integer.parseInt(args[2]);
+                            if (wait > 0){
+                                try{
+                                    TimeUnit.SECONDS.sleep(wait);
+                                } catch(InterruptedException ex){
+                                    Thread.currentThread().interrupt();
+                                }
+                            }
+                        }
                         Bukkit.dispatchCommand(Bukkit.getConsoleSender(), cmd_list[1]);
                         return true;
                     }
@@ -117,6 +183,38 @@ public class Main extends JavaPlugin implements CommandExecutor{
             }
             
         }
+        if (command.getName().equalsIgnoreCase("rcreload")){
+            this.reloadConfig();
+            sender.sendMessage(ChatColor.GREEN + "Config Reloaded");
+            return true;
+        }
+/*
+        if (command.getName().equalsIgnoreCase("rcongig")){
+            if (args[0].equalsIgnoreCase("add")){
+                String[] commands = Arrays.copyOfRange(args, 2, args.length-1);
+                for (int x = 0; x == commands.length-1; x++){
+                     commands[x] = commands[x] + " ";
+                }
+                String commands2 = commands.toString();
+                sender.sendMessage(commands2);
+                if (args[1] != "none"){
+                    if (isInteger(args[1]) == true){
+                        commands2 = args[1] + ":" + commands2;
+                    }
+                    else{
+                        sender.sendMessage(ChatColor.YELLOW + "You must add a percentage or none as your second arguement!");
+                    }
+                }
+                this.getConfig().set(args[0], commands2);
+                this.saveConfig();
+                return true;
+                
+            }
+            if (args[0].equalsIgnoreCase("remove")){
+                
+            }
+        }
+*/
         return false;
     }
     
